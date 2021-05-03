@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { authService } from '../../firebase/firebase.utility';
 
+import './authform.styles.scss';
+
 const inputStyles = {};
 
-const SignUp = () => {
+const AuthForm = () => {
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
@@ -74,4 +76,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default AuthForm;

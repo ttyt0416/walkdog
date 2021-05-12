@@ -3,8 +3,6 @@ import './homepage.styles.scss';
 
 import { dbService } from '../../firebase/firebase.utility';
 
-import PostingsPage from '../postingpage/postingpage.components';
-
 import Postings from '../../components/postings/postings.components';
 
 
@@ -26,9 +24,8 @@ const HomePage = ({ userObj }) => {
     }, []);
     return (
       <div className="container">
-        <PostingsPage userObj={userObj} />
         <div style={{ marginTop: 30 }}>
-          {postings.map((nweet) => (
+          {postings.map((postings) => (
             <Postings key={postings.id} postingObj={postings} isOwner={postings.creatorId === userObj.uid} />
           ))}
         </div>

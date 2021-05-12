@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './postingpage.styles.scss';
 
+import { useHistory } from 'react-router-dom'
+
 import { v4 as uuidv4 } from "uuid";
 
 import {storageService, dbService} from '../../firebase/firebase.utility';
@@ -11,6 +13,7 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 const PostingPage = ({ userObj }) => {
     const [posting, setPosting] = useState('');
     const [attachment, setAttachment] = useState('');
+    let history = useHistory();
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -32,6 +35,7 @@ const PostingPage = ({ userObj }) => {
         await dbService.collection('postings').add(postingObj);
         setPosting('');
         setAttachment('');
+        history.push('/');
     };
 
     const onChange = (event) => {

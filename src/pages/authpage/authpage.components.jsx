@@ -19,7 +19,7 @@ const AuthPage = () => {
         await authService.signInWithPopup(provider);
     };
     return (
-        <div className='authContainer'>
+        <div className='authpage__Container'>
             <AuthForm />
             <div className='authBtns'>
                 <button onClick={onSocialClick} name='google' className='authBtn'>

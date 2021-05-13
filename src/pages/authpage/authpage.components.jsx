@@ -19,10 +19,10 @@ const AuthPage = () => {
         await authService.signInWithPopup(provider);
     };
     return (
-        <div className='authpage__Container'>
+        <div className='authPage__container'>
             <AuthForm />
-            <div className='authBtns'>
-                <button onClick={onSocialClick} name='google' className='authBtn'>
+            <div className='authPage__btns'>
+                <button onClick={onSocialClick} name='google' className='authPage__btn'>
                     <FontAwesomeIcon icon={faGoogle} />
                 </button>
             </div>

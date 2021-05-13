@@ -1,0 +1,12 @@
+@import '../../App.scss';
+
+.authPage {
+
+   &__btn {
+       padding: .4rem 1.5rem;
+       margin-top: .5rem;
+       @include centerAlign;
+       left: 70%;
+       top: 55%;
+   }
+}

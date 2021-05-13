@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'
+// import './App.css'
+import './App.scss'
 import { useMediaQuery } from 'react-responsive';
 import {  HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 

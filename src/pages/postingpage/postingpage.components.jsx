@@ -63,12 +63,12 @@ const PostingPage = ({ userObj }) => {
     };
 
     return (
-        <form onSubmit={onSubmit} className='postingForm'>
-            <div className='postingInput__container'>
-                <input className='postingInput__input' value={posting} onChange={onChange} type='text'/>
-                <input type='submit' value='&rarr;' className='postingInput__arrow' />
+        <form onSubmit={onSubmit} className='postingPage__form'>
+            <div className='postingPage__container'>
+                <input className='postingPage__input' value={posting} onChange={onChange} type='text'/>
+                <input type='submit' value='&rarr;' className='postingPage__arrow' />
             </div>
-            <label for='attach-file' className='postingInput__label'>
+            <label for='attach-file' className='postingPage__label'>
                 <span>사진 추가</span>
                 <FontAwesomeIcon icon={faPlus} />
             </label>

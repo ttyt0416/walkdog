@@ -1,0 +1,9 @@
+@import '../../App.scss';
+
+.postingPage {
+
+    &__form {
+        @include centerAlign;
+        top: 40%;
+    }
+}

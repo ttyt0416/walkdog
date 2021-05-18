@@ -21,10 +21,15 @@ const PostingPage = ({ userObj }) => {
             return;
         }
         let attachmentUrl = '';
-        if (attachment !== '') {
-            const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
-            const response = await attachmentRef.putString(attachment, 'data_url');
-            attachmentUrl = await response.ref.getDownloadURL();
+        if (attachment !== "") {
+          const attachmentRef = storageService
+            .ref()
+            .child(`${userObj.uid}/${uuidv4()}`);
+          const response = await attachmentRef.putString(
+            attachment,
+            "data_url"
+          );
+          attachmentUrl = await response.ref.getDownloadURL();
         }
         const postingObj = {
             text: posting,
@@ -61,20 +66,41 @@ const PostingPage = ({ userObj }) => {
             reader.readAsDataURL(theFile);
         }
     };
+    
+    const onClearAttachment = () => setAttachment('');
 
     return (
-        <form onSubmit={onSubmit} className='postingPage__form'>
-            <div className='postingPage__container'>
-                <input className='postingPage__input' value={posting} onChange={onChange} type='text'/>
-                <input type='submit' value='&rarr;' className='postingPage__arrow' />
-            </div>
-            <label for='attach-file' className='postingPage__label'>
-                <span>사진 추가</span>
-                <FontAwesomeIcon icon={faPlus} />
-            </label>
-            <input id='attach-file' type='file' accept='image/*' onChange={onFileChange} />
-        </form>
-    )
-}
+      <form onSubmit={onSubmit} className="postingPage__form">
+        <div className="postingPage__container">
+          <input
+            className="postingPage__input"
+            value={posting}
+            onChange={onChange}
+            type="text"
+            maxLength={500}
+          />
+          <input type="submit" value="&rarr;" className="postingPage__arrow" />
+        </div>
+        <label for="attach-file" className="postingPage__label">
+          <span>사진 추가</span>
+          <FontAwesomeIcon icon={faPlus} />
+        </label>
+        <input
+          id="attach-file"
+          type="file"
+          multiple
+          accept="image/*"
+          onChange={onFileChange}
+        />
+
+        <div className="postingPage__attachment">
+          <img src={attachment} />
+          <div className="postingPage__clear" onClick={onClearAttachment}>
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
+        </div>
+      </form>
+    );
+};
 
 export default PostingPage;

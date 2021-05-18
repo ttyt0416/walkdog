@@ -6,7 +6,7 @@ import './authform.styles.scss';
 const inputStyles = {};
 
 const AuthForm = () => {
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
@@ -42,8 +42,8 @@ const AuthForm = () => {
   const toggleAccount = () => setNewAccount((prev) => !prev);
 
   return (
-    <>
-      <form onSubmit={onSubmit} className="auth__container">
+    <div className='auth__container'>
+      <form onSubmit={onSubmit} className="auth__form">
         <input
           name="email"
           type="email"
@@ -67,12 +67,12 @@ const AuthForm = () => {
           className="auth__input auth__submit"
           value={newAccount ? "계정생성" : "로그인"}
         />
-        {error && <span className="authError">{error}</span>}
+        {error && <span className="auth__error">{error}</span>}
       </form>
       <span onClick={toggleAccount} className="auth__switch">
         {newAccount ? "로그인" : "계정생성"}
       </span>
-    </>
+    </div>
   );
 };
 

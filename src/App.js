@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import './App.css'
 import './App.scss'
 import { useMediaQuery } from 'react-responsive';
-import {  HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {  BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { authService } from './firebase/firebase.utility';
 
@@ -44,35 +44,37 @@ const App = () => {
   });
 
   return (
-  <div>
-      {isMobile ? <SideButton /> : <Header refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} />}
-  
+    <div>
+      {isMobile ? (
+        <SideButton />
+      ) : (
+        <Header
+          refreshUser={refreshUser}
+          isLoggedIn={Boolean(userObj)}
+          userObj={userObj}
+        />
+      )}
       
         <Switch>
-
-          <Route exact path='/'>
+          <Route exact path="/">
             <HomePage userObj={userObj} />
           </Route>
-          
-          <Route exact path='/user'>
+
+          <Route exact path="/user">
             <UserPage />
           </Route>
 
-          <Route exact path='/posting'>
-            <PostingPage userObj={userObj}/>
+          <Route exact path="/posting">
+            <PostingPage userObj={userObj} />
           </Route>
 
-          <Route exact path='/auth'>
-            {
-              userObj != null ? (<Redirect to='/' />) : (<AuthPage />)
-            }
+          <Route exact path="/auth">
+            {userObj != null ? <Redirect to="/" /> : <AuthPage />}
           </Route>
-
         </Switch>
       
-    
-  </div>
-  )
+    </div>
+  );
 }
 
 export default App;

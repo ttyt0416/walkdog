@@ -2,11 +2,56 @@
 
 .authPage {
 
-   &__btn {
-       padding: .4rem 1.5rem;
-       margin-top: .5rem;
-       @include centerAlign;
-       left: 70%;
-       top: 55%;
-   }
+    &__container {
+        padding: .2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include centerAlign;
+        width: 50%;
+        top: 40%;
+    }
+
+    &__form {
+        width: 100%;
+    }
+
+    &__input {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    &__btns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    &__btn {
+        margin-top: .5rem;
+    }
+
+    &__submit {
+        flex: 2;
+        text-align: center;
+        // width: 70%;
+    }
+
+    &__switches {
+        // width: 30%;
+        flex: 1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__switch {
+        padding: .5rem 1rem;
+        text-align: center;
+    }
+
 }

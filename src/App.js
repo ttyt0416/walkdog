@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import './App.css'
 import './App.scss'
 import { useMediaQuery } from 'react-responsive';
-import {  BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { authService } from './firebase/firebase.utility';
 
@@ -27,7 +27,9 @@ const App = () => {
           uid: user.uid
         });
       } else {
-        setUserObj(null);
+        setUserObj(
+          null
+        );
       }
       setInit(true);
     });

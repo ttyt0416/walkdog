@@ -26,7 +26,7 @@ const HomePage = ({ userObj }) => {
       <div className="container">
         <div style={{ marginTop: 30 }}>
           {postings.map((postings) => (
-            <Postings key={postings.id} postingObj={postings} isOwner={postings.creatorId === userObj.uid} />
+            <Postings key={postings.id} postingObj={postings} isOwner={userObj == null ? false : postings.creatorId === userObj.uid} />
           ))}
         </div>
       </div>

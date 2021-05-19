@@ -5,5 +5,42 @@
     &__form {
         @include centerAlign;
         top: 40%;
+        width: 60%;
+        height: 40%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    &__time {
+        text-align: right;
+        margin-top: 1rem;
+    }
+
+    &__attachment {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 20rem;
+        height: 24rem;
+    }
+
+    &__attachedImg {
+        width: 10rem;
+        height: 12rem;
+        background-size: cover;
+        border: 1px solid black;
     }
 }

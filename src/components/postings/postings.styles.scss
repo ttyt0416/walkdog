@@ -1,0 +1,71 @@
+.posting {
+
+    &__posts {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    &__description {
+        width: 5rem;
+        height: 7rem;
+    }
+
+    &__strings {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 60%;
+        font-size: 1.3rem;
+    }
+
+    &__img {
+        background-size: cover;
+        width: 25rem;
+        height: 30rem;
+    }
+
+    &__content {
+        margin-left: 1.5rem;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.3rem;
+        margin-top: 2rem;
+    }
+
+    &__edit {
+
+        justify-content: center;
+        width: 100%;
+        display: flex;
+
+        &-file {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-inputs {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        &-attachment {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            
+        }
+
+        &-attachmentImg {
+            width: 25rem;
+            height: 30rem;
+            background-size: cover;
+        }
+    }
+}

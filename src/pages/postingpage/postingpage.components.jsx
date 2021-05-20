@@ -131,50 +131,50 @@ const PostingPage = ({ userObj }) => {
             <label>
               <input
                 className="postingPage__radio"
-                // value={satisfy}
+                value='매우 불만족'
                 name="satisfiction"
                 type="radio"
-                onClick={() => setSatisfy("매우 불만족")}
+                onClick={() => setSatisfy('매우 불만족')}
               />
               매우 불만족
             </label>
             <label>
               <input
                 className="postingPage__radio"
-                // value={satisfy}
+                value='불만족'
                 name="satisfiction"
                 type="radio"
-                onClick={() => setSatisfy("불만족")}
+                onClick={() => setSatisfy('불만족')}
               />
               불만족
             </label>
             <label>
               <input
                 className="postingPage__radio"
-                // value={satisfy}
+                value='보통'
                 name="satisfiction"
                 type="radio"
-                onClick={() => setSatisfy("보통")}
+                onClick={() => setSatisfy('보통')}
               />
               보통
             </label>
             <label>
               <input
                 className="postingPage__radio"
-                value={satisfy}
+                value='만족'
                 name="satisfiction"
                 type="radio"
-                onClick={() => setSatisfy("만족")}
+                onClick={() => setSatisfy('만족')}
               />
               만족
             </label>
             <label>
               <input
                 className="postingPage__radio"
-                // value={satisfy}
+                value='매우 만족'
                 name="satisfiction"
                 type="radio"
-                onClick={() => setSatisfy("매우 만족")}
+                onClick={() => setSatisfy('매우 만족')}
               />
               매우 만족
             </label>

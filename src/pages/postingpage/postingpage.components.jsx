@@ -34,6 +34,7 @@ const PostingPage = ({ userObj }) => {
           attachmentUrl = await response.ref.getDownloadURL();
         }
         const postingObj = {
+            liked: 0,
             description: posting,
             time: time,
             satisfy: satisfy,

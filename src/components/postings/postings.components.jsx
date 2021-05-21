@@ -4,11 +4,14 @@ import './postings.styles.scss';
 import { dbService, storageService } from '../../firebase/firebase.utility';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faTimes, faThumbsUp as thumbSolid } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp as thumbLight } from '@fortawesome/free-regular-svg-icons'
 
-const Postings = ({ postingObj, isOwner }) => {
+const Postings = ({ postingObj, isLoggedIn, isOwner }) => {
     const [editing, setEditing] = useState(false);
-    const [newAttach, setNewAttach] = useState(postingObj.attachmentUrl)
+    const [like, setLike] = useState(false);
+    let [newLiked, setNewLiked] = useState(postingObj.liked);
+    const [newAttach, setNewAttach] = useState(postingObj.attachmentUrl);
     const [newPosting, setNewPosting] = useState(postingObj.description);
     const [newTime, setNewTime] = useState(postingObj.time);
     const [newSatisfy, setNewSatisfy] = useState(postingObj.satisfy);
@@ -22,6 +25,8 @@ const Postings = ({ postingObj, isOwner }) => {
     };
 
     const toggleEditing = () => setEditing((prev) => !prev);
+    
+    const toggleLike = () => setLike((prev) => !prev);
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -76,6 +81,23 @@ const Postings = ({ postingObj, isOwner }) => {
 
   const onClearNewAttachment = () => setNewAttach('');
 
+  const onLike = async () => {
+    // postingObj.liked ++
+    setNewLiked(newLiked += 1)
+    await dbService.doc(`postings/${postingObj.id}`).update({
+      liked: newLiked
+    });
+    toggleLike();
+  }
+
+  const onUnlike = async() => {
+    setNewLiked(newLiked -= 1)
+    await dbService.doc(`postings/${postingObj.id}`).update({
+      liked: newLiked
+    });
+    toggleLike();
+  }
+  
     return (
       <div className="posting">
         {editing ? (
@@ -207,7 +229,7 @@ const Postings = ({ postingObj, isOwner }) => {
                   <span>시간: {postingObj.time}분</span>
                   <span>만족도: {postingObj.satisfy}</span>
                 </div>
-                {isOwner && (
+                {isOwner ? (
                   <div class="posting__actions">
                     <span onClick={onDeleteClick}>
                       <FontAwesomeIcon icon={faTrash} />
@@ -216,6 +238,23 @@ const Postings = ({ postingObj, isOwner }) => {
                       <FontAwesomeIcon icon={faPencilAlt} />
                     </span>
                   </div>
+                ) : (
+                  isLoggedIn && (
+                    <div className="posting__like">
+                      {like ? (
+                        <div onClick={ onUnlike }>
+                          <FontAwesomeIcon icon={thumbSolid} />
+                        </div>
+                      ) : (
+                        <div onClick={ onLike }>
+                          <FontAwesomeIcon icon={thumbLight} />
+                        </div>
+                      )}
+                      <div className='posting__liked-num'>
+                        {postingObj.liked}
+                      </div>
+                    </div>
+                  )
                 )}
               </div>
             </div>

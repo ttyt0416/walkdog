@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faTimes, faThumbsUp as thumbSolid } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp as thumbLight } from '@fortawesome/free-regular-svg-icons'
 
-const Postings = ({ postingObj, isLoggedIn, isOwner }) => {
+const Postings = ({ postingObj, isLoggedIn, isOwner, userObj }) => {
     const [editing, setEditing] = useState(false);
     const [like, setLike] = useState(false);
     let [newLiked, setNewLiked] = useState(postingObj.liked);
@@ -82,12 +82,17 @@ const Postings = ({ postingObj, isLoggedIn, isOwner }) => {
   const onClearNewAttachment = () => setNewAttach('');
 
   const onLike = async () => {
-    // postingObj.liked ++
     setNewLiked(newLiked += 1)
     await dbService.doc(`postings/${postingObj.id}`).update({
       liked: newLiked
     });
     toggleLike();
+    
+    // await firebase.dbService.collection('postings').doc(`${postingObj.id}`).update({
+    //   liked: firebase.dbService.FieldValue.arrayUnion(userObj.uid),
+    // });
+    // toggleLike();
+    // console.log([postingObj.liked]);
   }
 
   const onUnlike = async() => {

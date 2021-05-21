@@ -63,11 +63,11 @@ const App = () => {
           </Route>
 
           <Route exact path="/user">
-            <UserPage />
+            {userObj == null ? <Redirect to="/" /> : <UserPage />}
           </Route>
 
           <Route exact path="/posting">
-            <PostingPage userObj={userObj} />
+            {userObj == null ? <Redirect to="/" /> : <PostingPage userObj={userObj} />}
           </Route>
 
           <Route exact path="/auth">
